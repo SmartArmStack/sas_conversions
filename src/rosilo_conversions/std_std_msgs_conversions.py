@@ -29,3 +29,6 @@ def double_to_std_msgs_float64(double):
     ros_float64 = Float64()
     ros_float64.data = double
     return ros_float64
+
+def std_msgs_float64_to_double(ros_float64):
+    return ros_float64.data
