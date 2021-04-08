@@ -159,8 +159,8 @@ geometry_msgs::WrenchStamped dq_to_geometry_msgs_wrench_stamped(const DQ &force,
 void geometry_msgs_twist_to_dq(const geometry_msgs::Twist &msg, DQ &linear, DQ &angular)
 {
     linear.q(1) = msg.linear.x;
-    linear.q(2) = msg.linear.x;
-    linear.q(3) = msg.linear.x;
+    linear.q(2) = msg.linear.y;
+    linear.q(3) = msg.linear.z;
     angular.q(1) = msg.angular.x;
     angular.q(2) = msg.angular.y;
     angular.q(3) = msg.angular.z;

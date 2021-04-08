@@ -24,9 +24,14 @@
 """
 from dqrobotics import *
 import rospy
-from geometry_msgs.msg import Point, Quaternion, Pose
-from geometry_msgs.msg import PoseStamped
+from geometry_msgs.msg import Point, Quaternion, Pose, Twist, Wrench
+from geometry_msgs.msg import PoseStamped, TwistStamped, WrenchStamped
 from std_msgs.msg import Header
+
+
+def _add_header(msg):
+    msg.header = Header()
+    msg.stamp = rospy.Time.now()
 
 
 def geometry_msgs_point_to_dq(msg):
@@ -68,11 +73,63 @@ def dq_to_geometry_msgs_pose(dq):
 
 def dq_to_geometry_msgs_pose_stamped(dq):
     ps = PoseStamped()
-    ps.header = Header()
-    ps.stamp = rospy.Time.now()
+    _add_header(ps)
     ps.pose = dq_to_geometry_msgs_pose(dq)
     return ps
 
 
 def geometry_msgs_pose_stamped_to_dq(ps):
     return geometry_msgs_pose_to_dq(ps.pose)
+
+
+def geometry_msgs_wrench_to_dq(msg):
+    force = DQ([msg.force.x,
+                msg.force.y,
+                msg.force.z])
+    torque = DQ([msg.torque.x,
+                 msg.torque.y,
+                 msg.torque.z])
+    return force, torque
+
+
+def dq_to_geometry_msgs_wrench(force, torque):
+    wrench = Wrench()
+    wrench.force.x = force.q(1)
+    wrench.force.y = force.q(2)
+    wrench.force.z = force.q(3)
+    wrench.torque.x = torque.q(5)
+    wrench.torque.y = torque.q(5)
+    wrench.torque.z = torque.q(5)
+    return wrench
+
+
+def geometry_msgs_wrench_stamped_to_dq(msg):
+    return geometry_msgs_wrench_to_dq(msg)
+
+
+def dq_to_geometry_msgs_wrench_stamped(force, torque):
+    ws = WrenchStamped()
+    _add_header(ws)
+    ws.wrench = dq_to_geometry_msgs_wrench(force, torque)
+    return ws
+
+
+def geometry_msgs_twist_to_dq(msg):
+    linear = DQ([msg.linear.x,
+                 msg.linear.y,
+                 msg.linear.z])
+    angular = DQ([msg.angular.x,
+                  msg.angular.y,
+                  msg.angular.z])
+    return linear, angular
+
+
+def dq_to_geometry_msgs_twist(linear, angular):
+    twist = Twist()
+    twist.linear.x = linear.q(1)
+    twist.linear.y = linear.q(2)
+    twist.linear.z = linear.q(3)
+    twist.angular.x = angular.q(1)
+    twist.angular.y = angular.q(2)
+    twist.angular.z = angular.q(3)
+    return twist
