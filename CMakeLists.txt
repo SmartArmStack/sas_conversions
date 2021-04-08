@@ -10,6 +10,7 @@ project(rosilo_conversions)
 find_package(catkin REQUIRED COMPONENTS
   geometry_msgs
   roscpp
+  rospy
   std_msgs
 )
 

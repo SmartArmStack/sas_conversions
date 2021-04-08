@@ -22,5 +22,10 @@
 #
 # ################################################################
 """
-from DQ_geometry_msgs_conversions import *
-from std_std_msgs_conversions import *
+from std_msgs.msg import Float64
+
+
+def double_to_std_msgs_float64(double):
+    ros_float64 = Float64()
+    ros_float64.data = double
+    return ros_float64
