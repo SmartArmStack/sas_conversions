@@ -31,7 +31,7 @@ from std_msgs.msg import Header
 
 def _add_header(msg):
     msg.header = Header()
-    msg.stamp = rospy.Time.now()
+    msg.header.stamp = rospy.Time.now()
 
 
 def geometry_msgs_point_to_dq(msg):
@@ -45,7 +45,7 @@ def dq_to_geometry_msgs_point(t):
 
 
 def geometry_msgs_quaternion_to_dq(msg):
-    r = DQ(msg.w, msg.x, msg.y, msg.z)
+    r = DQ([msg.w, msg.x, msg.y, msg.z])
     return r.normalize()
 
 
