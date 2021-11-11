@@ -31,7 +31,7 @@ from std_msgs.msg import Header
 
 def _add_header(msg):
     msg.header = Header()
-    msg.stamp = rospy.Time.now()
+    msg.header.stamp = rospy.Time.now()
 
 
 def geometry_msgs_point_to_dq(msg):
@@ -40,21 +40,21 @@ def geometry_msgs_point_to_dq(msg):
 
 
 def dq_to_geometry_msgs_point(t):
-    p = Point(t.q(1), t.q(2), t.q(3))
+    p = Point(t.q[1], t.q[2], t.q[3])
     return p
 
 
 def geometry_msgs_quaternion_to_dq(msg):
-    r = DQ(msg.w, msg.x, msg.y, msg.z)
+    r = DQ([msg.w, msg.x, msg.y, msg.z])
     return r.normalize()
 
 
 def dq_to_geometry_msgs_quaternion(r):
     q = Quaternion()
-    q.w = r.q(0)
-    q.x = r.q(1)
-    q.y = r.q(2)
-    q.z = r.q(3)
+    q.w = r.q[0]
+    q.x = r.q[1]
+    q.y = r.q[2]
+    q.z = r.q[3]
     return q
 
 
@@ -94,12 +94,12 @@ def geometry_msgs_wrench_to_dq(msg):
 
 def dq_to_geometry_msgs_wrench(force, torque):
     wrench = Wrench()
-    wrench.force.x = force.q(1)
-    wrench.force.y = force.q(2)
-    wrench.force.z = force.q(3)
-    wrench.torque.x = torque.q(5)
-    wrench.torque.y = torque.q(5)
-    wrench.torque.z = torque.q(5)
+    wrench.force.x = force.q[1]
+    wrench.force.y = force.q[2]
+    wrench.force.z = force.q[3]
+    wrench.torque.x = torque.q[1]
+    wrench.torque.y = torque.q[2]
+    wrench.torque.z = torque.q[3]
     return wrench
 
 
@@ -126,10 +126,10 @@ def geometry_msgs_twist_to_dq(msg):
 
 def dq_to_geometry_msgs_twist(linear, angular):
     twist = Twist()
-    twist.linear.x = linear.q(1)
-    twist.linear.y = linear.q(2)
-    twist.linear.z = linear.q(3)
-    twist.angular.x = angular.q(1)
-    twist.angular.y = angular.q(2)
-    twist.angular.z = angular.q(3)
+    twist.linear.x = linear.q[1]
+    twist.linear.y = linear.q[2]
+    twist.linear.z = linear.q[3]
+    twist.angular.x = angular.q[1]
+    twist.angular.y = angular.q[2]
+    twist.angular.z = angular.q[3]
     return twist
