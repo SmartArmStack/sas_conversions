@@ -5,7 +5,7 @@ from catkin_pkg.python_setup import generate_distutils_setup
 
 # fetch values from package.xml
 setup_args = generate_distutils_setup(
-    packages=['rosilo_conversions'],
+    packages=['sas_conversions'],
     package_dir={'': 'src'},
 )
 
