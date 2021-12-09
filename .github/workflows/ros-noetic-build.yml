@@ -12,4 +12,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: autobuild
-      run: autobuild
+      run: |
+        source /home/murilo/.bashrc
+        autobuild
