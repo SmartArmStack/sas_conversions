@@ -45,6 +45,19 @@ DQ std_vector_double_to_dq(const std::vector<double> &std_vector_double)
     return DQ(std_vector_double_to_vectorxd(std_vector_double));
 }
 
+std::vector<int> vectorxi_to_std_vector_int(const VectorXi &vectorxi)
+{
+    std::vector<int> vec(vectorxi.data(), vectorxi.data() + vectorxi.rows() * vectorxi.cols());
+    return vec;
+}
+
+VectorXi std_vector_int_to_vectorxi(std::vector<int> std_vector_int)
+{
+    int* ptr = &std_vector_int[0];
+    Eigen::Map<Eigen::VectorXi> vec(ptr,std_vector_int.size()); //We need access to the pointer here so we cannot use const ref
+    return vec;
+}
+
 }
 
 
