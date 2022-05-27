@@ -27,14 +27,14 @@
 namespace sas
 {
 
-DQ geometry_msgs_point_to_dq(const geometry_msgs::Point &msg)
+DQ geometry_msgs_point_to_dq(const geometry_msgs::msg::Point &msg)
 {
     return DQ(0,msg.x,msg.y,msg.z,0,0,0,0);
 }
 
-geometry_msgs::Point dq_to_geometry_msgs_point(const DQ &dq)
+geometry_msgs::msg::Point dq_to_geometry_msgs_point(const DQ &dq)
 {
-    geometry_msgs::Point p;
+    geometry_msgs::msg::Point p;
     p.x = dq.q(1);
     p.y = dq.q(2);
     p.z = dq.q(3);
@@ -42,21 +42,21 @@ geometry_msgs::Point dq_to_geometry_msgs_point(const DQ &dq)
 }
 
 
-DQ geometry_msgs_point_stamped_to_dq(const geometry_msgs::PointStamped &msg)
+DQ geometry_msgs_point_stamped_to_dq(const geometry_msgs::msg::PointStamped &msg)
 {
     return geometry_msgs_point_to_dq(msg.point);
 }
 
-geometry_msgs::PointStamped dq_to_geometry_msgs_point_stamped(const DQ &dq)
+geometry_msgs::msg::PointStamped dq_to_geometry_msgs_point_stamped(const DQ &dq)
 {
-    geometry_msgs::PointStamped p;
-    p.header = std_msgs::Header();
-    p.header.stamp = ros::Time::now();
+    geometry_msgs::msg::PointStamped p;
+    p.header = std_msgs::msg::Header();
+    p.header.stamp = rclcpp::Clock().now();
     p.point = dq_to_geometry_msgs_point(dq);
     return p;
 }
 
-DQ geometry_msgs_pose_to_dq(const geometry_msgs::Pose& msg)
+DQ geometry_msgs_pose_to_dq(const geometry_msgs::msg::Pose& msg)
 {
     const DQ t(
                 0,
@@ -69,12 +69,12 @@ DQ geometry_msgs_pose_to_dq(const geometry_msgs::Pose& msg)
     return (r+0.5*E_*t*r);
 }
 
-geometry_msgs::Pose dq_to_geometry_msgs_pose(const DQ& dq)
+geometry_msgs::msg::Pose dq_to_geometry_msgs_pose(const DQ& dq)
 {
     const DQ t = translation(dq);
     const DQ r = rotation(dq);
 
-    geometry_msgs::Pose p;
+    geometry_msgs::msg::Pose p;
     p.position.x = t.q(1);
     p.position.y = t.q(2);
     p.position.z = t.q(3);
@@ -84,31 +84,31 @@ geometry_msgs::Pose dq_to_geometry_msgs_pose(const DQ& dq)
     return p;
 }
 
-DQ geometry_msgs_pose_stamped_to_dq(const geometry_msgs::PoseStamped& msg)
+DQ geometry_msgs_pose_stamped_to_dq(const geometry_msgs::msg::PoseStamped& msg)
 {
     return geometry_msgs_pose_to_dq(msg.pose);
 }
 
-geometry_msgs::PoseStamped dq_to_geometry_msgs_pose_stamped(const DQ& dq)
+geometry_msgs::msg::PoseStamped dq_to_geometry_msgs_pose_stamped(const DQ& dq)
 {
-    geometry_msgs::PoseStamped posed_stamped;
-    posed_stamped.header = std_msgs::Header();
-    posed_stamped.header.stamp = ros::Time::now();
+    geometry_msgs::msg::PoseStamped posed_stamped;
+    posed_stamped.header = std_msgs::msg::Header();
+    posed_stamped.header.stamp = rclcpp::Clock().now();
     posed_stamped.pose = dq_to_geometry_msgs_pose(dq);
     return posed_stamped;
 }
 
 
-DQ geometry_msgs_quaternion_to_dq(const geometry_msgs::Quaternion& msg)
+DQ geometry_msgs_quaternion_to_dq(const geometry_msgs::msg::Quaternion &msg)
 {
     const  DQ r  = DQ(msg.w,msg.x,msg.y,msg.z);
     const  DQ nr = normalize(r);
     return nr;
 }
 
-geometry_msgs::Quaternion dq_to_geometry_msgs_quaternion(const DQ& dq)
+geometry_msgs::msg::Quaternion dq_to_geometry_msgs_quaternion(const DQ& dq)
 {
-    geometry_msgs::Quaternion r;
+    geometry_msgs::msg::Quaternion r;
     r.w = dq.q(0);
     r.x = dq.q(1);
     r.y = dq.q(2);
@@ -116,7 +116,7 @@ geometry_msgs::Quaternion dq_to_geometry_msgs_quaternion(const DQ& dq)
     return r;
 }
 
-void geometry_msgs_wrench_to_dq(const geometry_msgs::Wrench &msg, DQ &force, DQ &torque)
+void geometry_msgs_wrench_to_dq(const geometry_msgs::msg::Wrench &msg, DQ &force, DQ &torque)
 {
     force = DQ(0);
     force.q(1)=msg.force.x;
@@ -128,9 +128,9 @@ void geometry_msgs_wrench_to_dq(const geometry_msgs::Wrench &msg, DQ &force, DQ 
     torque.q(3)=msg.torque.z;
 }
 
-geometry_msgs::Wrench dq_to_geometry_msgs_wrench(const DQ &force, const DQ &torque)
+geometry_msgs::msg::Wrench dq_to_geometry_msgs_wrench(const DQ &force, const DQ &torque)
 {
-    geometry_msgs::Wrench wrench;
+    geometry_msgs::msg::Wrench wrench;
     wrench.force.x = force.q(1);
     wrench.force.y = force.q(2);
     wrench.force.z = force.q(3);
@@ -142,21 +142,21 @@ geometry_msgs::Wrench dq_to_geometry_msgs_wrench(const DQ &force, const DQ &torq
     return wrench;
 }
 
-void geometry_msgs_wrench_stamped_to_dq(const geometry_msgs::WrenchStamped &msg, DQ &force, DQ &torque)
+void geometry_msgs_wrench_stamped_to_dq(const geometry_msgs::msg::WrenchStamped &msg, DQ &force, DQ &torque)
 {
     geometry_msgs_wrench_to_dq(msg.wrench,force,torque);
 }
 
-geometry_msgs::WrenchStamped dq_to_geometry_msgs_wrench_stamped(const DQ &force, const DQ &torque)
+geometry_msgs::msg::WrenchStamped dq_to_geometry_msgs_wrench_stamped(const DQ &force, const DQ &torque)
 {
-    geometry_msgs::WrenchStamped wrench_stamped;
-    wrench_stamped.header = std_msgs::Header();
-    wrench_stamped.header.stamp = ros::Time::now();
+    geometry_msgs::msg::WrenchStamped wrench_stamped;
+    wrench_stamped.header = std_msgs::msg::Header();
+    wrench_stamped.header.stamp = rclcpp::Clock().now();
     wrench_stamped.wrench = dq_to_geometry_msgs_wrench(force,torque);
     return wrench_stamped;
 }
 
-void geometry_msgs_twist_to_dq(const geometry_msgs::Twist &msg, DQ &linear, DQ &angular)
+void geometry_msgs_twist_to_dq(const geometry_msgs::msg::Twist &msg, DQ &linear, DQ &angular)
 {
     linear.q(1) = msg.linear.x;
     linear.q(2) = msg.linear.y;
@@ -166,9 +166,9 @@ void geometry_msgs_twist_to_dq(const geometry_msgs::Twist &msg, DQ &linear, DQ &
     angular.q(3) = msg.angular.z;
 }
 
-geometry_msgs::Twist dq_to_geometry_msgs_twist(const DQ &linear, const DQ &angular)
+geometry_msgs::msg::Twist dq_to_geometry_msgs_twist(const DQ &linear, const DQ &angular)
 {
-    geometry_msgs::Twist twist;
+    geometry_msgs::msg::Twist twist;
     twist.linear.x = linear.q(1);
     twist.linear.y = linear.q(2);
     twist.linear.z = linear.q(3);
