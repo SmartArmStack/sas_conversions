@@ -27,26 +27,26 @@
 namespace sas
 {
 
-double std_msgs_float64_to_double(const std_msgs::Float64& f64)
+double std_msgs_float64_to_double(const sas_common::msg::Float64 &f64)
 {
     return double(f64.data);
 }
 
-std_msgs::Float64 double_to_std_msgs_float64(const double& d)
+sas_common::msg::Float64 double_to_std_msgs_float64(const double& d)
 {
-    std_msgs::Float64 stdmsgsfloat;
+    sas_common::msg::Float64 stdmsgsfloat;
     stdmsgsfloat.data = d;
     return (stdmsgsfloat);
 }
 
-bool std_msgs_bool_to_bool(const std_msgs::Bool& b)
+bool std_msgs_bool_to_bool(const sas_common::msg::Bool &b)
 {
     return bool(b.data);
 }
 
-std_msgs::Bool bool_to_std_msgs_bool(const bool& b)
+sas_common::msg::Bool bool_to_std_msgs_bool(const bool& b)
 {
-    std_msgs::Bool stdmsgsbool;
+    sas_common::msg::Bool stdmsgsbool;
     stdmsgsbool.data = b;
     return (stdmsgsbool);
 }
