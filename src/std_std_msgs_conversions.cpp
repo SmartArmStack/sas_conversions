@@ -1,5 +1,5 @@
 /*
-# Copyright (c) 2016-2020 Murilo Marques Marinho
+# Copyright (c) 2016-2023 Murilo Marques Marinho
 #
 #    This file is part of sas_conversions.
 #
@@ -22,7 +22,7 @@
 #
 # ################################################################*/
 
-#include<sas_conversions/std_std_msgs_conversions.h>
+#include<sas_conversions/std_std_msgs_conversions.hpp>
 
 namespace sas
 {
