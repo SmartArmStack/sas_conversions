@@ -72,6 +72,23 @@ target_include_directories(${PROJECT_NAME}
    ${catkin_LIBRARIES}
  )
 
+ament_export_targets({PROJECT_NAME} HAS_LIBRARY_TARGET)
+ament_export_dependencies(Eigen3)
+
+install(
+    DIRECTORY include/
+    DESTINATION include
+    )
+
+install(
+    TARGETS ${PROJECT_NAME}
+    EXPORT export_${PROJECT_NAME}
+    LIBRARY DESTINATION lib
+    ARCHIVE DESTINATION lib
+    RUNTIME DESTINATION bin
+    INCLUDES DESTINATION include
+    )
+
 #############
 ## Install ##
 #############
