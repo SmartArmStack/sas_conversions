@@ -24,7 +24,7 @@ add_library(${PROJECT_NAME}
     src/eigen3_std_conversions.cpp
     )
 
-ament_target_dependencies(${PROJECT_NAME} rclcpp sas_common std_msgs geometry_msgs)
+ament_target_dependencies(${PROJECT_NAME} rclcpp geometry_msgs std_msgs sas_common)
 
 target_include_directories(${PROJECT_NAME}
     PUBLIC
