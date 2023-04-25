@@ -4,7 +4,7 @@
   <name>sas_conversions</name>
   <version>0.0.0</version>
   <description>The sas_conversions package for ROS2</description>
-  <maintainer email="murilo@g.ecc.u-tokyo.ac.jp">Murilo M. Marinho</maintainer>
+  <maintainer email="murilomarinho@ieee.org">Murilo M. Marinho</maintainer>
   <license>LGPLv3</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
