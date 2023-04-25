@@ -18,7 +18,7 @@ find_package(sas_core REQUIRED)
 find_package(sas_common REQUIRED)
 
 
-add_library(${PROJECT_NAME}
+add_library(${PROJECT_NAME} SHARED
     src/DQ_geometry_msgs_conversions.cpp
     src/std_std_msgs_conversions.cpp
     )
@@ -47,7 +47,7 @@ install(
     TARGETS ${PROJECT_NAME}
     EXPORT export_${PROJECT_NAME}
     LIBRARY DESTINATION lib
-    ARCHIVE DESTINATION lib
+    #ARCHIVE DESTINATION lib
     RUNTIME DESTINATION bin
     INCLUDES DESTINATION include
     )
