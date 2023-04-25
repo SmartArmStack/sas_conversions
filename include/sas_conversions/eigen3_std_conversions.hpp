@@ -1,6 +1,6 @@
 #pragma once
 /*
-# Copyright (c) 2016-2020 Murilo Marques Marinho
+# Copyright (c) 2016-2023 Murilo Marques Marinho
 #
 #    This file is part of sas_conversions.
 #
@@ -23,19 +23,6 @@
 #
 # ################################################################*/
 
-#include<vector>
-#include<eigen3/Eigen/Dense>
-#include<dqrobotics/DQ.h>
-
-using namespace Eigen;
-using namespace DQ_robotics;
-
-namespace sas
-{
-std::vector<double> vectorxd_to_std_vector_double(const VectorXd& vectorxd);
-std::vector<int>    vectorxi_to_std_vector_int(const VectorXi& vectorxi);
-VectorXd            std_vector_double_to_vectorxd(std::vector<double> std_vector_double);
-VectorXi            std_vector_int_to_vectorxi(std::vector<int> std_vector_int);
-DQ                  std_vector_double_to_dq(const std::vector<double>& std_vector_double);
-}
+//Everything that does not depend on ROS is now at sas_core
+#include <sas_core/eigen3_std_conversions.hpp>
 
