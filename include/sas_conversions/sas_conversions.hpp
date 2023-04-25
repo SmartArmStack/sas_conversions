@@ -23,7 +23,7 @@
 #
 # ################################################################*/
 
-#include<sas_conversions/DQ_geometry_msgs_conversions.h>
-#include<sas_conversions/std_std_msgs_conversions.h>
-#include<sas_conversions/eigen3_std_conversions.h>
+#include<sas_conversions/DQ_geometry_msgs_conversions.hpp>
+#include<sas_conversions/std_std_msgs_conversions.hpp>
+#include<sas_conversions/eigen3_std_conversions.hpp>
 
