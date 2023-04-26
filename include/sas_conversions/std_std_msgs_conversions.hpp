@@ -24,20 +24,20 @@
 # ################################################################*/
 
 #include "rclcpp/rclcpp.hpp"
-#include "sas_common/msg/float64.hpp"
-#include "sas_common/msg/bool.hpp"
+#include "sas_msgs/msg/float64.hpp"
+#include "sas_msgs/msg/bool.hpp"
 
 namespace sas
 {
 ///*********************************
 ///   double <-> std_msgs::Float64
 ///*********************************
-double std_msgs_float64_to_double(const sas_common::msg::Float64& f64);
-sas_common::msg::Float64 double_to_std_msgs_float64(const double& d);
+double std_msgs_float64_to_double(const sas_msgs::msg::Float64& f64);
+sas_msgs::msg::Float64 double_to_std_msgs_float64(const double& d);
 
 ///*********************************
 ///   bool <-> std_msgs::Bool
 ///*********************************
-bool std_msgs_bool_to_bool(const sas_common::msg::Bool& b);
-sas_common::msg::Bool bool_to_std_msgs_bool(const bool& b);
+bool std_msgs_bool_to_bool(const sas_msgs::msg::Bool& b);
+sas_msgs::msg::Bool bool_to_std_msgs_bool(const bool& b);
 }
