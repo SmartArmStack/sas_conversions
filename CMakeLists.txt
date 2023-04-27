@@ -14,15 +14,17 @@ find_package(rclcpp REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(Eigen3 REQUIRED)
+find_package(sas_core REQUIRED)
 find_package(sas_msgs REQUIRED)
 
+##### CPP LIBRARY #####
 
 add_library(${PROJECT_NAME} SHARED
     src/DQ_geometry_msgs_conversions.cpp
     src/std_std_msgs_conversions.cpp
     )
 
-ament_target_dependencies(${PROJECT_NAME} Eigen3 rclcpp std_msgs geometry_msgs sas_msgs)
+ament_target_dependencies(${PROJECT_NAME} Eigen3 rclcpp std_msgs geometry_msgs sas_core sas_msgs)
 
 target_include_directories(${PROJECT_NAME}
   PUBLIC
@@ -30,7 +32,7 @@ target_include_directories(${PROJECT_NAME}
     $<INSTALL_INTERFACE:include>)
 
 ament_export_targets(export_${PROJECT_NAME} HAS_LIBRARY_TARGET)
-ament_export_dependencies(Eigen3 rclcpp std_msgs geometry_msgs sas_msgs)
+ament_export_dependencies(Eigen3 rclcpp std_msgs geometry_msgs sas_core sas_msgs)
 
 target_link_libraries(
     ${PROJECT_NAME}
@@ -50,6 +52,31 @@ install(
     RUNTIME DESTINATION bin
     INCLUDES DESTINATION include
     )
+
+##END## CPP LIBRARY #####
+
+##### PYTHON LIBRARY #####
+
+ament_python_install_package(${PROJECT_NAME})
+
+##END## PYTHON LIBRARY #####
+
+##### CPP BINARY #####
+
+add_executable(sas_conversions_example_readme
+    src/examples/sas_conversions_example_readme.cpp)
+
+target_link_libraries(sas_conversions_example_readme
+    ${PROJECT_NAME}
+    Eigen3::Eigen
+    -ldqrobotics
+    )
+
+install(TARGETS
+  sas_conversions_example_readme
+  DESTINATION lib/${PROJECT_NAME})
+
+##END## CPP BINARY #####
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
