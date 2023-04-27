@@ -18,9 +18,13 @@ Conversions between `ROS2` messages and other libraries.
 
 #### Example
 
+Running the example:
+
 ```commandline
 ros2 run sas_conversions sas_conversions_example_readme
 ```
+
+Example's source code:
 
 ```cpp
 #include <dqrobotics/DQ.h>
