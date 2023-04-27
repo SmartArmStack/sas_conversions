@@ -14,7 +14,6 @@ find_package(rclcpp REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(Eigen3 REQUIRED)
-find_package(sas_core REQUIRED)
 find_package(sas_msgs REQUIRED)
 
 
@@ -23,7 +22,7 @@ add_library(${PROJECT_NAME} SHARED
     src/std_std_msgs_conversions.cpp
     )
 
-ament_target_dependencies(${PROJECT_NAME} Eigen3 rclcpp std_msgs geometry_msgs sas_msgs sas_core)
+ament_target_dependencies(${PROJECT_NAME} Eigen3 rclcpp std_msgs geometry_msgs sas_msgs)
 
 target_include_directories(${PROJECT_NAME}
   PUBLIC
@@ -31,7 +30,7 @@ target_include_directories(${PROJECT_NAME}
     $<INSTALL_INTERFACE:include>)
 
 ament_export_targets(export_${PROJECT_NAME} HAS_LIBRARY_TARGET)
-ament_export_dependencies(Eigen3 rclcpp std_msgs geometry_msgs sas_msgs sas_core)
+ament_export_dependencies(Eigen3 rclcpp std_msgs geometry_msgs sas_msgs)
 
 target_link_libraries(
     ${PROJECT_NAME}
