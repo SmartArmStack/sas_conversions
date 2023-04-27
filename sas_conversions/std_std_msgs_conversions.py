@@ -1,5 +1,5 @@
 """
-# Copyright (c) 2012-2021 Murilo Marques Marinho
+# Copyright (c) 2012-2023 Murilo Marques Marinho
 #
 #    This file is part of sas_conversions.
 #
@@ -22,7 +22,7 @@
 #
 # ################################################################
 """
-from std_msgs.msg import Float64
+from sas_msgs.msg import Float64
 
 
 def double_to_std_msgs_float64(double):
