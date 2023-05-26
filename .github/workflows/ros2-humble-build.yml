@@ -1,13 +1,13 @@
-name: ROS Noetic build.
+name: ROS2 Humble build
 
 on:
   push:
-    branches: [ master ]
+    branches: [ ros2 ]
 
 jobs:
   build:
 
-    runs-on: self-hosted
+    runs-on: ros2
 
     steps:
     - uses: actions/checkout@v2
