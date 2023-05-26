@@ -13,4 +13,4 @@ jobs:
     - uses: actions/checkout@v2
     - name: autobuild
       run: |
-        sh /home/murilo/autobuild/build_ros2.sh
+        sh /home/murilo/autobuild/build.sh
