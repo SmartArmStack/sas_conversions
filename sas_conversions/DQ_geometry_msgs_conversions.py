@@ -1,5 +1,5 @@
 """
-# Copyright (c) 2012-2023 Murilo Marques Marinho
+# Copyright (c) 2012-2026 Murilo Marques Marinho
 #
 #    This file is part of sas_conversions.
 #
@@ -24,12 +24,13 @@
 """
 from dqrobotics import *
 import rclpy
+from rclpy.node import Node
 from geometry_msgs.msg import Point, Quaternion, Pose, Twist, Wrench
 from geometry_msgs.msg import PoseStamped, TwistStamped, WrenchStamped
 from std_msgs.msg import Header
 
 
-def _add_header(msg, node: rclpy.Node = None):
+def _add_header(msg, node: Node = None):
     if node is not None:
         msg.header = Header()
         msg.header.stamp = node.get_clock().now().to_msg()
@@ -72,7 +73,7 @@ def dq_to_geometry_msgs_pose(dq):
     return p
 
 
-def dq_to_geometry_msgs_pose_stamped(dq, node: rclpy.Node = None):
+def dq_to_geometry_msgs_pose_stamped(dq, node: Node = None):
     ps = PoseStamped()
     _add_header(ps, node)
     ps.pose = dq_to_geometry_msgs_pose(dq)
@@ -108,7 +109,7 @@ def geometry_msgs_wrench_stamped_to_dq(msg):
     return geometry_msgs_wrench_to_dq(msg)
 
 
-def dq_to_geometry_msgs_wrench_stamped(force, torque, node: rclpy.Node = None):
+def dq_to_geometry_msgs_wrench_stamped(force, torque, node: Node = None):
     ws = WrenchStamped()
     _add_header(ws, node)
     ws.wrench = dq_to_geometry_msgs_wrench(force, torque)
