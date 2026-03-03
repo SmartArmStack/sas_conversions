@@ -42,7 +42,10 @@ def geometry_msgs_point_to_dq(msg):
 
 
 def dq_to_geometry_msgs_point(t):
-    p = Point(t.q[1], t.q[2], t.q[3])
+    p = Point()
+    p.x = t.q[1]
+    p.y = t.q[2] 
+    p.z = t.q[3]
     return p
 
 
