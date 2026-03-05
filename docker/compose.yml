@@ -1,0 +1,11 @@
+services:
+  sas_common:
+    build: .
+    volumes:
+      - ../../sas_conversions:/root/sas_conversions_devel/src/sas_conversions
+    command: /bin/bash -c "
+      cd /root/sas_conversions_devel/src/
+      && ls .
+      && colcon build
+      && source install/setup.bash
+      && ros2 run sas_conversions sas_conversions_example_readme"
