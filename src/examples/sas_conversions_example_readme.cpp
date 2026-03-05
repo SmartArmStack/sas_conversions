@@ -1,3 +1,5 @@
+#include <iostream>
+#include <cassert>
 #include <dqrobotics/DQ.h>
 #include <geometry_msgs/msg/pose_stamped.hpp>
 #include <sas_conversions/sas_conversions.hpp>
@@ -11,6 +13,8 @@ int main(int,char**)
     
     auto x_msg = dq_to_geometry_msgs_pose(x);
     auto x_msg_back = geometry_msgs_pose_to_dq(x_msg);
+
+    assert(x == x_msg_back);
 
     return 0;
 } 
