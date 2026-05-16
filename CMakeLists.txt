@@ -39,6 +39,8 @@ target_include_directories(${PROJECT_NAME}
 
 target_link_libraries(${PROJECT_NAME} PUBLIC
     -ldqrobotics
+    Eigen3::Eigen
+
     rclcpp::rclcpp
     std_msgs::std_msgs
     geometry_msgs::geometry_msgs
