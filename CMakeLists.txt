@@ -37,7 +37,7 @@ target_include_directories(${PROJECT_NAME}
 #ament_export_targets(export_${PROJECT_NAME} HAS_LIBRARY_TARGET)
 #ament_export_dependencies(Eigen3 rclcpp std_msgs geometry_msgs sas_core sas_msgs)
 
-target_link_libraries(${PROJECT_NAME}
+target_link_libraries(${PROJECT_NAME} PUBLIC
     -ldqrobotics
     rclcpp::rclcpp
     std_msgs::std_msgs
