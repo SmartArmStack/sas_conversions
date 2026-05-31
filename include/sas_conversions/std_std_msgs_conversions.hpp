@@ -32,12 +32,38 @@ namespace sas
 ///*********************************
 ///   double <-> std_msgs::Float64
 ///*********************************
+/**
+ * @brief Convert a sas_msgs::msg::Float64 to a primitive double.
+ *
+ * @param f64 The input Float64 message.
+ * @return double The contained value as a double.
+ */
 double std_msgs_float64_to_double(const sas_msgs::msg::Float64& f64);
+
+/**
+ * @brief Convert a primitive double to a sas_msgs::msg::Float64 message.
+ *
+ * @param d The input double value.
+ * @return sas_msgs::msg::Float64 The resulting message containing the value.
+ */
 sas_msgs::msg::Float64 double_to_std_msgs_float64(const double& d);
 
 ///*********************************
 ///   bool <-> std_msgs::Bool
 ///*********************************
+/**
+ * @brief Convert a sas_msgs::msg::Bool to a primitive bool.
+ *
+ * @param b The input Bool message.
+ * @return bool The contained boolean value.
+ */
 bool std_msgs_bool_to_bool(const sas_msgs::msg::Bool& b);
+
+/**
+ * @brief Convert a primitive bool to a sas_msgs::msg::Bool message.
+ *
+ * @param b The input boolean value.
+ * @return sas_msgs::msg::Bool The resulting message containing the value.
+ */
 sas_msgs::msg::Bool bool_to_std_msgs_bool(const bool& b);
 }
