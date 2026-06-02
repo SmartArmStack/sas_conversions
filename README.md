@@ -1,5 +1,9 @@
 # sas_conversions
 
+> [!TIP]
+> Repository for this module: https://github.com/SmartArmStack/sas_conversions. <br/>
+> More information about SmartArmStack is available in https://smartarmstack.github.io/.
+
 Conversions between `ROS2` messages and other libraries.
 
 - [X] `rclcpp` Native implementation.
