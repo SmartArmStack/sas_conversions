@@ -4,37 +4,33 @@
 > Repository for this module: https://github.com/SmartArmStack/sas_conversions. <br/>
 > More information about SmartArmStack is available in https://smartarmstack.github.io/.
 
-Conversions between `ROS2` messages and other libraries.
+## Contents
 
-- [X] `rclcpp` Native implementation.
-- [X] `rclpy` Native implementation.
+- `include/sas_conversions/` — public C++ headers.
+- `sas_conversions/` — Python conversion modules.
+- `src/` — C++ implementation and examples.
 
-## Main goodies
+## C++
 
-### C++
+| Header                             | Purpose                                          |
+|------------------------------------|--------------------------------------------------|
+| `sas_conversions.hpp`              | Wrapper with all conversion headers.             |
+| `eigen3_std_conversions.hpp`       | Converts `std::vector<>` and `Eigen3::Matrix<>`. |
+| `std_std_msgs_conversions.hpp`     | Converts `float64` and `bool` types.             |
+| `DQ_geometry_msgs_conversions.hpp` | Converts `geometry_msgs` to `dqrobotics`.        |
 
-| Header                             | Description                                                                                                                   |
-|------------------------------------|-------------------------------------------------------------------------------------------------------------------------------|
-| `sas_conversions.hpp`              | A convenience wrapper contaning all conversion headers.                                                                       |
-| `eigen3_std_conversions.hpp`       | A thin wrapper around the `sas_core` conversion header, contaning conversions between `std::vector<>` and `Eigen3::Matrix<>`. |
-| `std_std_msgs_conversions.hpp`     | Conversions between plain `float64` and `bool` and suitable `ROS2` messages.                                                  |
-| `DQ_geometry_msgs_conversions.hpp` | Conversions between `geometry_msgs` and `dqrobotics` elements.                                                                |
+## Python
 
-#### Example
+| Module                            | Purpose                                   |
+|-----------------------------------|-------------------------------------------|
+| `std_std_msgs_conversions.py`     | Converts `float64` and `bool` types.      |
+| `DQ_geometry_msgs_conversions.py` | Converts `geometry_msgs` to `dqrobotics`. |
 
-Running the example:
+## Examples
 
-```commandline
+See `src/examples/`.
+
+```bash
 ros2 run sas_conversions sas_conversions_example_readme
 ```
 
-Example's source code:
-
-https://github.com/SmartArmStack/sas_conversions/blob/81cf8a7892d7fc3e275afc29cf3e803765b6e1fd/src/examples/sas_conversions_example_readme.cpp#L1-L16
-
-### Python
-
-| File                              | Description                                                                  |
-|-----------------------------------|------------------------------------------------------------------------------|
-| `std_std_msgs_conversions.py`     | Conversions between plain `float64` and `bool` and suitable `ROS2` messages. |
-| `DQ_geometry_msgs_conversions.py` | Conversions between `geometry_msgs` and `dqrobotics` elements.               |
