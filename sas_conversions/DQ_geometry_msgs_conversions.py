@@ -24,7 +24,7 @@
 """
 
 """
-@file DQ_geometry_msgs_conversions.py
+@file DQ_geometry_msgs_conversions
 @brief Conversion utilities between dqrobotics.DQ and ROS2 geometry messages.
 
 This module provides functions to convert between dqrobotics `DQ` objects
@@ -45,7 +45,7 @@ from std_msgs.msg import Header
 
 
 def _add_header(msg, node: Node = None):
-    """
+    """!
     @brief Add a ROS2 `std_msgs/Header` with the current time to `msg`.
 
     If `node` is provided the function will set `msg.header` and populate the
@@ -61,7 +61,7 @@ def _add_header(msg, node: Node = None):
 
 
 def geometry_msgs_point_to_dq(msg):
-    """
+    """!
     @brief Convert a `geometry_msgs.msg.Point` into a dqrobotics `DQ` translation.
 
     The returned `DQ` encodes the translation vector (x, y, z) as a pure quaternion.
@@ -74,7 +74,7 @@ def geometry_msgs_point_to_dq(msg):
 
 
 def dq_to_geometry_msgs_point(t):
-    """
+    """!
     @brief Convert a dqrobotics `DQ` translation into a `geometry_msgs.msg.Point`.
 
     Expects `t` to be a pure quaternion DQ.
@@ -90,7 +90,7 @@ def dq_to_geometry_msgs_point(t):
 
 
 def geometry_msgs_quaternion_to_dq(msg):
-    """
+    """!
     @brief Convert a `geometry_msgs.msg.Quaternion` into a normalized rotation `DQ`.
 
     @param msg `geometry_msgs.msg.Quaternion` to convert.
@@ -101,7 +101,7 @@ def geometry_msgs_quaternion_to_dq(msg):
 
 
 def dq_to_geometry_msgs_quaternion(r):
-    """
+    """!
     @brief Convert a dqrobotics rotation `DQ` into `geometry_msgs.msg.Quaternion`.
 
     @param r dqrobotics.DQ rotation quaternion).
@@ -116,7 +116,7 @@ def dq_to_geometry_msgs_quaternion(r):
 
 
 def geometry_msgs_pose_to_dq(msg):
-    """
+    """!
     @brief Convert a `geometry_msgs.msg.Pose` into a dqrobotics `DQ` pose.
 
     @param msg `geometry_msgs.msg.Pose` to convert.
@@ -128,7 +128,7 @@ def geometry_msgs_pose_to_dq(msg):
 
 
 def dq_to_geometry_msgs_pose(dq):
-    """
+    """!
     @brief Convert a dqrobotics `DQ` pose into a `geometry_msgs.msg.Pose`.
 
     @param dq dqrobotics.DQ pose to convert.
@@ -141,7 +141,7 @@ def dq_to_geometry_msgs_pose(dq):
 
 
 def dq_to_geometry_msgs_pose_stamped(dq, node: Node = None):
-    """
+    """!
     @brief Convert a dqrobotics `DQ` into a `geometry_msgs.msg.PoseStamped`.
 
     If `node` is provided the resulting message will include a populated
@@ -158,7 +158,7 @@ def dq_to_geometry_msgs_pose_stamped(dq, node: Node = None):
 
 
 def geometry_msgs_pose_stamped_to_dq(ps):
-    """
+    """!
     @brief Convert a `geometry_msgs.msg.PoseStamped` into a dqrobotics `DQ`.
 
     @param ps `geometry_msgs.msg.PoseStamped` to convert.
@@ -168,7 +168,7 @@ def geometry_msgs_pose_stamped_to_dq(ps):
 
 
 def geometry_msgs_wrench_to_dq(msg):
-    """
+    """!
     @brief Convert a `geometry_msgs.msg.Wrench` into force and torque `DQ`s.
 
     Returns a tuple `(force, torque)` where each element is pure quaternion `DQ`.
@@ -186,7 +186,7 @@ def geometry_msgs_wrench_to_dq(msg):
 
 
 def dq_to_geometry_msgs_wrench(force, torque):
-    """
+    """!
     @brief Convert force and torque `DQ`s into a `geometry_msgs.msg.Wrench`.
 
     Both `force` and `torque` are expected to be pure quaternion DQ objects.
@@ -206,7 +206,7 @@ def dq_to_geometry_msgs_wrench(force, torque):
 
 
 def geometry_msgs_wrench_stamped_to_dq(msg):
-    """
+    """!
     @brief Convert a `geometry_msgs.msg.WrenchStamped` into force and torque pure quaternion `DQ`s.
 
     @param msg `geometry_msgs.msg.WrenchStamped` to convert.
@@ -216,7 +216,7 @@ def geometry_msgs_wrench_stamped_to_dq(msg):
 
 
 def dq_to_geometry_msgs_wrench_stamped(force, torque, node: Node = None):
-    """
+    """!
     @brief Convert force and torque `DQ`s into a `geometry_msgs.msg.WrenchStamped`.
 
     Optionally populates the `header` timestamp when `node` is provided.
@@ -233,7 +233,7 @@ def dq_to_geometry_msgs_wrench_stamped(force, torque, node: Node = None):
 
 
 def geometry_msgs_twist_to_dq(msg):
-    """
+    """!
     @brief Convert a `geometry_msgs.msg.Twist` into pure quaternion linear and angular `DQ`s.
 
     @param msg `geometry_msgs.msg.Twist` to convert.
@@ -249,7 +249,7 @@ def geometry_msgs_twist_to_dq(msg):
 
 
 def dq_to_geometry_msgs_twist(linear, angular):
-    """
+    """!
     @brief Convert linear and angular `DQ`s into a `geometry_msgs.msg.Twist`.
 
     @param linear dqrobotics.DQ encoding linear velocity vector.
