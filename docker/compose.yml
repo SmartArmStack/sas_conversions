@@ -1,8 +1,8 @@
 services:
-  sas_common:
-    build: .
-    volumes:
-      - ../../sas_conversions:/root/sas_conversions_devel/src/sas_conversions
+  sas_conversions:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
     command: /bin/bash -c "
       cd /root/sas_conversions_devel/src/
       && ls .
