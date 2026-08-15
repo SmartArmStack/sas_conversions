@@ -5,4 +5,5 @@ ENV BASH_ENV="/etc/bash_env"
 
 RUN sudo apt-get update && sudo apt-get upgrade -y
 RUN sudo sudo dpkg -r --force-depends ros-jazzy-sas-conversions
-RUN mkdir -p /root/sas_common_devel/src/
+RUN mkdir -p /root/sas_conversions_devel/src/
+COPY . /root/sas_conversions_devel/src/sas_conversions
