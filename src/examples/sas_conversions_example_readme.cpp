@@ -8,7 +8,6 @@
 
 using namespace DQ_robotics;
 using namespace sas;
-using namespace Eigen;
 
 int main(int,char**)
 {
