@@ -22,5 +22,5 @@
 #
 # ################################################################
 """
-from .DQ_geometry_msgs_conversions import *
-from .std_std_msgs_conversions import *
+from sas_conversions.DQ_geometry_msgs_conversions import *
+from sas_conversions.std_std_msgs_conversions import *
