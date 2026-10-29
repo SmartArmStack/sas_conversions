@@ -48,7 +48,7 @@ from rclpy.node import Node
 from std_msgs.msg import Header
 
 
-def _add_header(msg, node: Node = None):
+def _add_header(msg, node: Node | None = None):
     """!
     @brief Add a ROS2 `std_msgs/Header` with the current time to `msg`.
 
@@ -144,7 +144,7 @@ def dq_to_geometry_msgs_pose(dq):
     return p
 
 
-def dq_to_geometry_msgs_pose_stamped(dq, node: Node = None):
+def dq_to_geometry_msgs_pose_stamped(dq, node: Node | None = None):
     """!
     @brief Convert a dqrobotics `DQ` into a `geometry_msgs.msg.PoseStamped`.
 
@@ -219,7 +219,7 @@ def geometry_msgs_wrench_stamped_to_dq(msg):
     return geometry_msgs_wrench_to_dq(msg)
 
 
-def dq_to_geometry_msgs_wrench_stamped(force, torque, node: Node = None):
+def dq_to_geometry_msgs_wrench_stamped(force, torque, node: Node | None = None):
     """!
     @brief Convert force and torque `DQ`s into a `geometry_msgs.msg.WrenchStamped`.
 
