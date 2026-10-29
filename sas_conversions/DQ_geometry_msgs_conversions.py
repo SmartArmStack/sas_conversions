@@ -21,9 +21,7 @@
 #   Author: Murilo M. Marinho, email: murilomarinho@ieee.org
 #
 # ################################################################
-"""
 
-"""
 @file DQ_geometry_msgs_conversions
 @brief Conversion utilities between dqrobotics.DQ and ROS2 geometry messages.
 
